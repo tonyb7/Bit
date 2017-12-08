@@ -3,6 +3,8 @@ package datatypes;
 import java.util.*;
 //import BitOperations.*;
 
+import utilites.ByteUtils;
+
 public class Bits {
 	
 	private List<Bit> bits = new ArrayList<Bit>();
@@ -35,6 +37,19 @@ public class Bits {
 		//TODO
 	}
 	
+	public Bits (byte inputByte) {
+		bits = new ArrayList<Bit>(Byte.SIZE);
+		
+		String byteAsString = ByteUtils.byteToString(inputByte);
+		
+		for (int i = 0; i < byteAsString.length(); i++) {
+			bits.add(new Bit(byteAsString.charAt(i) == '1'));
+		}
+	}
+	
+	public Bits (byte[] bytes) {
+		//TODO
+	}
 	
 	public Bits clone() {
 		return new Bits(this);
